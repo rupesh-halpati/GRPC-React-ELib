@@ -6,10 +6,12 @@ import { combineReducers } from '@reduxjs/toolkit'
 // import todosReducer from 'features/todos/todosSlice'
 // import usersReducer from 'features/users/usersSlice'
 // import visibilityFilterReducer from 'features/visibilityFilter/filtersSlice'
-import authReducer from './auth/auth'
+import authReducer from './auth/auth';
+import formReducer from './form/form';
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  form:formReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

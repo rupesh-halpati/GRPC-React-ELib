@@ -1,0 +1,18 @@
+.side-nav {
+    &--thin {
+        width: 10.72rem !important;
+        // transition: width .4s ease-in-out !important;
+        
+    }
+    &--very-thin {
+        width: 5.19rem !important;
+        // transition: width .4s ease-in-out !important;
+    }
+}
+
+.sticky-item {
+    position: sticky;
+    bottom: 0;
+    text-align: right;
+}
+

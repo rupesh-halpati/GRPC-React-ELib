@@ -1,0 +1,43 @@
+.login{
+    height: 100%;
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5% 27%;
+        height: 100%;
+
+        @media (max-width: 700px) {
+            padding: 1%;
+        }
+    }
+    &__body {
+        border: 1px solid #ccc;
+        width: 70%;
+        padding: 50px ;
+        border-radius: 0.3rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    &__header {
+        text-align: center;
+    }
+
+    &__divider {
+        margin: 2rem 0 !important;
+    }
+    &__submit-btn{
+        text-align: right;
+    }
+    &__error {
+        position: relative;
+    }
+    .ui.form .field {
+        margin: 0 0 2em;
+    }
+    .ui.pointing.label {
+        margin-top: -25px;
+        position: absolute;
+        font-size: 9px;
+    }
+}
