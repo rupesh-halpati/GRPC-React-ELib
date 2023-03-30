@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 
 export const SidebarItem = (props: any) => {
-    const highlight = false ? 'highlight-item' : null;
+    const highlight = shouldBeHighlighted(props) ? 'highlight-item' : null;
     const item = props.width === 'thin' ? 'sidebar-item sidebar-item--thin' : 'sidebar-item sidebar-item---very-thin';
-    const itemAlign = props.width === 'thin' ? 'sidebar-item-alignment-container--thin' : 'sidebar-item-alignment-container--very-thin';
+    const itemAlign = props.width === 'thin' ? 'sidebar-item__container--thin' : 'sidebar-item__container--very-thin';
     return (
         <Link to={{ pathname: props.path }}>
             <Menu.Item className={[item, highlight].join(' ')}>
@@ -20,12 +20,12 @@ export const SidebarItem = (props: any) => {
 }
 
 
-// const shouldBeHighlighted = (props: any) => {
-//     const { pathname } = props.location;
-//     if (props.path === '/') {
-//         return pathname === props.path;
-//     }
-//     return pathname.includes(props.path);
-// }
+const shouldBeHighlighted = (props: any) => {
+    const { pathname } = window.location;
+    if (props.path === '/') {
+        return pathname === props.path;
+    }
+    return pathname.includes(props.path);
+}
 
 export default SidebarItem;

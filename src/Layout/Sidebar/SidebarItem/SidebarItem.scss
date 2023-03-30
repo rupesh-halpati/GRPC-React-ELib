@@ -1,11 +1,12 @@
+@import "../../../scss/variable";
+
 .sidebar-item {
-  background: #f5f5f5;
+  background: $bg_color;
   color: rgba(0, 0, 0, 0.5) !important;
   padding: 0.92857143em 1.14285714em !important;
   span {
     i.icon {
-      // margin-right: 20px;
-      color: #888888;
+      color: $sidebar_icon;
     }
   }
 
@@ -15,14 +16,14 @@
     }
 
     i.icon {
-      color: #ff0002;
+      color: $icon_highlight;
     }
   }
-}
 
-.sidebar-item-alignment-container {
-  &--thin {
-    display: flex;
-    align-items: center;
+  &__container {
+    &--thin {
+      display: flex;
+      align-items: center;
+    }
   }
 }

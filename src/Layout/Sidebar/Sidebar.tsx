@@ -3,7 +3,8 @@ import './Sidebar.scss';
 import SidebarItem from './SidebarItem/SidebarItem';
 
 
-export const SideBar1 = ({ animation, direction, visible, width, setWidth }: any) => {
+export const SideBar1 = (props: any) => {
+  const { animation, direction, visible, width, setWidth } = props;
   return (
     <Sidebar
       as={Menu}
@@ -15,7 +16,7 @@ export const SideBar1 = ({ animation, direction, visible, width, setWidth }: any
       width={width}
     >
       <Menu borderless vertical stackable fixed='left'
-        className={width === 'thin' ? 'side-nav--thin' : 'side-nav--very-thin'}>
+        className={width === 'thin' ? 'sidebar__nav--thin' : 'sidebar__nav--very-thin'}>
         <SidebarItem path='/' label='Home' icon='home' width={width} />
         <SidebarItem path='/feed/trending' label='Trending' icon='fire' width={width} />
         <SidebarItem label='Followers' icon='spy' width={width} />
@@ -36,7 +37,7 @@ export const SideBar1 = ({ animation, direction, visible, width, setWidth }: any
         <SidebarItem label='Watch later' icon='clock' width={width} />
         <SidebarItem label='Liked videos' icon='thumbs up' width={width} />
         
-        <div className='sticky-item'>
+        <div className='sidebar__float-btn'>
           {width === 'thin' && (<Button circular icon='chevron left' size='mini' onClick={() => {
             setWidth('very thin')
           }} />)}

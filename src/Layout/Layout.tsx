@@ -16,10 +16,12 @@ import {
   Segment,
   Sidebar,
 } from 'semantic-ui-react'
-import React from "react";
+import React, { useEffect } from "react";
 import './Layout.scss'
 import { SideBar1 } from "./Sidebar/Sidebar";
 import Main from "./Main/Main";
+import Navbar from "./Navbar/Navbar";
+import { useNavigate } from "react-router-dom";
 
 function exampleReducer(state: any, action: any) {
   switch (action.type) {
@@ -34,11 +36,6 @@ function exampleReducer(state: any, action: any) {
   }
 }
 
-const trigger = (
-  <span>
-    <Icon name='user' circular /> Hello, Bob
-  </span>
-)
 
 export function Layout() {
   let navigation = useNavigation();
@@ -52,71 +49,27 @@ export function Layout() {
   const vertical = direction === 'bottom' || direction === 'top'
   const [visible, setVisible] = React.useState(false)
   const [width, setWidth] = React.useState('thin')
-  const options = [
-    { key: 'user', text: 'Account', icon: 'user' },
-    { key: 'settings', text: 'Settings', icon: 'settings' },
-    { key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
-  ]
+  const navigate = useNavigate();
+  // useEffect( () => {
+  //   navigate("/path/to/push");
+  // },)
 
   return (
-    <div className="main">
-      <div className="main__toolbar">
-        <div className="main__toolbar-left">
-          <Checkbox
-            checked={dimmed}
-            label='Dim Page'
-            onChange={(e, { checked }) =>
-              dispatch({ type: 'CHANGE_DIMMED', dimmed: checked })
-            }
-            toggle
-          />
-          <Checkbox
-            checked={visible}
-            label='Visible'
-            onChange={(e, { name, checked }) => setVisible(checked as boolean)}
-          />
-          <Button
-            disabled={vertical}
-            onClick={() =>
-              dispatch({ type: 'CHANGE_ANIMATION', animation: 'uncover' })
-            }
-          >
-            Uncover
-          </Button>
-          <Button
-            disabled={vertical}
-            onClick={() =>
-              dispatch({ type: 'CHANGE_ANIMATION', animation: 'slide along' })
-            }
-          >
-            Slide Along
-          </Button>
-          <Button
-            disabled={vertical}
-            onClick={() =>
-              dispatch({ type: 'CHANGE_ANIMATION', animation: 'slide out' })
-            }
-          >
-            Slide Out
-          </Button>
-        </div>
-        <div className="main__toolbar-right">
-          <Dropdown
-            trigger={trigger}
-            options={options}
-            pointing='top left'
-            icon={null}
-          />
-        </div>
-      </div>
+    <div className="layout">
+     <Navbar 
+       animation={animation}
+       direction={direction}
+       visible={visible}
+       setVisible = {setVisible}
+     />
       <Sidebar.Pushable as={Segment} style={{ overflow: 'hidden' }}>
-        {vertical && (
+        {/* {vertical && (
           <Main
             animation={animation}
             direction={direction}
             visible={visible}
           />
-        )}
+        )} */}
         {!vertical && (
           <SideBar1
             animation={animation}
@@ -129,7 +82,8 @@ export function Layout() {
         <Sidebar.Pusher dimmed={dimmed && visible}>
           <Segment basic>
             <Header as='h3'>Application Content</Header>
-            <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+            {/* <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' /> */}
+            <Outlet />
           </Segment>
         </Sidebar.Pusher>
       </Sidebar.Pushable>
